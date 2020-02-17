@@ -20,6 +20,17 @@ public class WebMvcControllerAdvice {
     public void initBinder(WebDataBinder dataBinder) {
         dataBinder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
     }
+    @ExceptionHandler(EmptyResultDataAccessException.class)
+    public String handleException(EmptyResultDataAccessException e, Model model) { //引数ではエラーのメッセージを受け取る 
+    	model.addAttribute("message", e);
+    	return "error/CustomPage";
+    }
+    
+	@ExceptionHandler(InquiryNotFoundException.class)
+	public String handleException(InquiryNotFoundException e, Model model) { //InquiryNotFoundExceptionがthrowされた場合は、このmethod内の処理が行われる
+		model.addAttribute("message",e);
+		return "error/CustomPage";
+	}
     
 //	@ExceptionHandler(EmptyResultDataAccessException.class)
 //	public String handleException(EmptyResultDataAccessException e,Model model) {

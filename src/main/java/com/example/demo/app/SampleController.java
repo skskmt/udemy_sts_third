@@ -33,7 +33,7 @@ public class SampleController {
 		
 		//hands-on
 		String sql = "SELECT id, name, email FROM inquiry WHERE id = 1";
-		Map<String, Object> map = jdbcTemplate.queryForMap(sql);
+		Map<String, Object> map = jdbcTemplate.queryForMap(sql); //queryForMapは1件も返りがないとEmptyResultDataAccessExceptionを返す
 		model.addAttribute("title", "Inquiry Form");
 		model.addAttribute("name", map.get("name"));
 		model.addAttribute("email", map.get("email"));
