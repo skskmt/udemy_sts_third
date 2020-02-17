@@ -21,6 +21,7 @@ public class SurveyServiceImpl implements SurveyService{
 	@Override
 	public void save(Survey survey) {
 		//hands-on
+		dao.insertSurvey(survey);
 	}
 
 	@Override
